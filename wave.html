@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- saved from url = (0014) about:internet -->
+<html lang="en">
+	<head>
+		<title>Wave</title>
+		<meta name="author" content="ralph.io - fudrat" />
+		<meta name="description" content=" " />
+		<meta name="keywords" content=" " />
+		<meta name="robot" content="index, follow" />
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <style type="text/css" media="all">
+        
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: roboto;
+			}
+
+            body {
+                min-height: 100vh;
+                display: grid;
+                place-items: center; /* this aligns all the content to the center  */
+                background-color: blanchedalmond;
+            }
+
+            .wave {
+                position: relative;
+                width: 350px;
+                height: 350px;
+                background-color: rgb(236, 233, 228);
+                border-radius: 50%;
+                /* overflow: hidden; */
+            }
+
+            .wave span {
+                position: absolute;
+                top: calc(12px * var(--i));
+                left: calc(12px * var(--i));
+                right: calc(12px * var(--i));
+                bottom: calc(12px * var(--i));
+                border: 10px solid #141414;
+                border-top: 10px solid yellow;
+                border-left: 10px solid yellow;
+                border-radius: 50%  ;
+                filter: hue-rotate(calc(180deg * var(--i)));
+                /* animation: wavy 1s alternate infinite;
+                animation-delay: calc(0.1s * var(--i)); */
+                animation: wavy 1s linear infinite;
+                animation-delay: calc(0.9s * var(--i));
+            }
+
+            @keyframes wavy {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(180deg);
+                }
+            }
+
+
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="wave">
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+                <span style="--i:4;"></span>
+                <span style="--i:5;"></span>
+                <span style="--i:6;"></span>
+                <span style="--i:7;"></span>
+            </div>
+		</div>
+</body>
+	<script type="text/javascript">
+			
+	</script>
+</html>

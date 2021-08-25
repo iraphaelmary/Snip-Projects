@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nav Bar</title>
+    <style type="text/css">
+        body {
+            background-color: whitesmoke
+        }
+
+        #wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            outline: 0;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .text {
+            height: 4rem;
+            overflow-y: hidden;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 2rem;
+            transform: translateY(4rem);
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0;
+        }
+
+        .text.show h1 {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <button onclick="popText()">Pop Text</button>
+        <div class="text" id="text">
+            <h1>Fudrat</h1>
+        </div>
+        <div class="text" id="text1">
+            <h1>Technologies</h1>
+        </div>
+        <div class="text" id="text2">
+            <h1>Limited (FTL)</h1>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    const text = document.getElementsByClassName('text');
+
+    const popText = () => {
+        for (var i=0; i<text.length; i++) {
+            text[i].classList.toggle('show');
+        };
+    };
+</script>
+</html>

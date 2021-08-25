@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014) about:internet -->
+<html lang="en">
+    <head>
+        <title>Text Background Animation</title>
+        <meta name="author" content="iraphaelmary" />
+        <meta name="description" content="Text Background Animation" />
+        <meta name="keywords" content="Text, Background, Animation" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, min-scale=1.0, max-scale=1.0" />
+        <meta name="revised" content="29/6/2020" />
+        <meta name="robot" content="follow,index" />
+        <meta name="color-theme" content="#c0c0c0" />
+        <meta http-equiv="content-script-type" content="text/javascript" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="apple-touch-icon" href="" />
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: #333faa;
+                background-image: url("img/codePro.jpg");
+                background-blend-mode: multiply;
+                /* animation: twistb 15s linear alternate infinite; */
+                background-position: top;
+                background-size: cover;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            #wrapper{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                text-align: center;
+                transform: translate(-50%, -50%);
+            }
+
+            h1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 80px;
+                white-space: nowrap;
+                font-family: "Arial black";
+                background: url("img/pat.jpg") no-repeat;
+                background-clip: text;
+                color: rgb(194, 174, 0);
+                animation: twist 15s linear infinite alternate;
+                
+            }
+
+            @keyframes twist {
+
+                0%{
+                    background-position: 0 0;
+                }
+
+                100%{
+                    background-position: 100% 100%;
+                }
+            }
+
+            @keyframes twistb {
+
+                0%{
+                    background-position: 100% 100%;
+                }
+
+                100%{
+                    background-position: 0 0;
+                }
+            }
+        </style>
+       
+    </head>
+    <body>
+        
+        <div id="wrapper">
+
+            <h1>RAPHAEL</h1>
+
+        </div>
+ </body>
+</html>

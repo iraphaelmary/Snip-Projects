@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stars Background Using Javascript</title>
+	<meta name="author" content="ralph.io - fudrat" />
+	<meta name="description" content=" " />
+	<meta name="keywords" content=" " />
+	<meta name="robot" content="index, follow" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				text-decoration: none;
+				font-family: roboto;
+				overflow: hidden;
+			}
+
+			nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 70px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 3rem 0 3rem;
+			}
+
+			.heading {
+				width: 100%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				display: flex;
+				transform: translate(-50%, -50%);
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+
+			.heading h1 {
+				padding: 1rem;
+				font-size: 3rem;
+			}
+
+			.heading button {
+				background-color: red;
+				padding: .8rem 2rem;
+				border-radius: 5px;
+				font-weight: bold;
+				font-family: sans-serif;
+				color: whitesmoke;
+				margin-top: 3rem;
+				border: 0;
+				outline: 0;
+				font-size: 2rem;
+			}
+
+			.heading p {
+				width: 50%;
+				line-height: 2.2rem;
+			}
+
+			.logo {
+				font-size: 2rem;
+				font-weight: bold;
+				font-family: cursive;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				color: black;
+			}
+		
+			.bars {
+				position: relative;
+				left: 3%;
+				top: 25%;
+				transform: translate(-50%, -50%);
+				height: 20px;
+				padding: 30px;
+			}
+
+			.message {
+				background-color: red;
+				padding: .8rem 2rem;
+				border-radius: 5px;
+				font-weight: bold;
+				font-family: sans-serif;
+				color: whitesmoke;
+				transition: all 0.2s;
+			}
+
+			.message:hover {
+				cursor: pointer;
+				background-color: #eee;
+				color: #333;
+			}
+
+
+			span {
+				width: 2.5rem;
+				height: 5px;
+				background-color: #000;
+				display: block;
+			}
+
+			.bar1{
+				transform: translateY(-2px);
+			}
+
+			.bar2 {
+				transform: translateY(2px);
+			}
+
+			.bar3 {
+				transform: translateY(6px);
+			}
+
+		</style>
+</head>
+<body>
+	
+		<canvas id="stars"></canvas>
+		<nav>
+			<div class="bars">
+				<span class="bar1"></span>
+				<span class="bar2"></span>
+				<span class="bar3"></span>
+			</div>
+			<div class="logo">fudrat</div>
+			<div class="message">Mail Us</div>
+		</nav>
+		<div class="heading">
+			<h1>fudrat TechNoloGies</h1>
+			<p>lorem ipsun text tudgs wejis lorem ipsun text tudgs wejis lorem ipsun text tudgs wejis lorem ipsun text tudgs wejis lorem ipsun text tudgs wejis lorem ipsun text tudgs wejis lorem ipsun text tudgs wejis</p>
+			<button>Explore</button>
+		</div>
+	
+</body>
+<script type="text/javascript">
+	// select DOM
+
+	const stars = document.getElementById('stars');
+	const ctxStars = stars.getContext('2d');
+	const output = document.querySelector('#speed');
+
+	//Create Global visible variables
+
+	let screen, starsEl, starsPar = {
+		speed: 10,
+		numm: 300,
+		extt: 4
+	};
+
+	//execute the stars functions
+
+	setUpStars();
+	updateStars();
+
+	//update stars on resize to keep them centered
+
+	window.onresize = function() {
+		setUpStars();
+	};
+
+	//stars constructions
+
+	function Star(){
+		this.x = Math.random() * stars.width;
+		this.y = Math.random() * stars.height;
+		this.z = Math.random() * stars.width;
+
+		this.move = function() {
+			this.z -= starsPar.speed;
+			if(this.z <= 0){
+				this.z = stars.width;
+			}
+		};
+
+			this.show = function() {
+			let x, y, rad, opacity;
+			x = (this.x - screen.c[0]) * (stars.width / this.z);
+			x = x + screen.c[0];
+			y = (this.y - screen.c[1]) * (stars.width / this.z);
+			y = y + screen.c[1];
+			rad = stars.width / this.z;
+			opacity = (rad > starsPar.extt) ? 1.5 * (2 - rad / starsPar.extt) : 1;
+
+			ctxStars.beginPath();
+			ctxStars.fillStyle = "rgb(255, 255, 255, " + opacity + ")";
+			ctxStars.arc(x, y, rad, 0, Math.PI * 2);
+			ctxStars.fill();
+		}
+	};
+
+	//set up canvas create all the stars
+
+	function setUpStars() {
+		screen = {
+			w: window.innerWidth,
+			h: window.innerHeight,
+			c: [window.innerWidth * 0.5, window.innerHeight * 0.5]
+		};
+
+		window.cancelAnimationFrame(updateStars);
+		stars.width = screen.w;
+		stars.height = screen.h;
+		starsEl = [];
+		for(let i = 0; i < starsPar.numm; i++) {
+			starsEl[1] = new Star();
+		}
+	}
+
+// redrawing the frame
+
+function updateStars() {
+	ctxStars.fillStyle = "#333";
+	ctxStars.fillRect(0, 0, stars.width, stars.height);
+	starsEl.forEach(function (s) {
+		s.show();
+		s.move();
+	});
+
+	window.requestAnimationFrame(updateStars);
+}
+
+
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background Changer</title>
+    <style type="text/css">
+      body {
+        background-color: rgb(7, 10, 10);
+      }
+
+      button {
+        /*center button Start*/
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        /*center button end*/
+
+        background-color: rgb(24, 24, 20);
+        font-family: "Courier New", Courier, monospace;
+        color: whitesmoke;
+        font-size: 2rem;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 5px;
+        user-select: none;
+        transition: all 0.2s ease-in-out;
+        outline: 15px solid rgb(255, 255, 255);
+        outline-offset: 0.6rem;
+        border: none;
+      }
+
+      p {
+        font-weight: bolder;
+        color: #000;
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="click-twice">
+      <p>Double Click to Change Background</p>
+    </button>
+
+    <script type="text/javascript">
+      const getBtn = document.getElementById("click-twice");
+      const getP = document.getElementsByTagName("p");
+      const getHex = () => Math.floor(Math.random() * 16777215).toString(16);
+
+      getBtn.addEventListener("dblclick", () => {
+        getBtn.style.backgroundColor = `#${getHex()}`;
+      });
+    </script>
+</body>
+</html>

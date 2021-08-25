@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url = (0014) about:internet -->
+<html lang="en">
+	<head>
+		<title>Wave</title>
+		<meta name="author" content="ralph.io - fudrat" />
+		<meta name="description" content=" " />
+		<meta name="keywords" content=" " />
+		<meta name="robot" content="index, follow" />
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <style type="text/css" media="all">
+             * {
+                 margin: 0;
+                 padding: 0;
+                 box-sizing:border-box;
+             }
+             
+            body {
+                padding-top: 15rem;
+                background-color: cadetblue;
+            }
+             #container {
+                 width: 200px;
+                 height: 200px;
+                 background-color: blue; 
+                 text-align: center; 
+                 padding: 60px 0;  
+                 margin: 0 auto; 
+                 border-radius: 10px;          
+             }
+		
+             button {
+                 padding: 5px;
+                 border-radius: 5px;
+                 margin: 2px;
+             }
+
+		</style>
+	</head>
+	<body>
+        <div id="container">
+            <p class="counter">Counter</p>
+            <p class="iteration" id="counter">0</p>
+            <button class="decr">Decrease</button>
+            <button class="incr">Increase</button>
+        </div>
+</body>
+	<script type="text/javascript">
+        const counter = document.getElementById('counter');
+        const incr = document.querySelector('.incr');
+        const decr = document.querySelector('.decr');
+
+        let counting = 0;
+
+        incr.addEventListener('click', () => {
+            counting++;
+            counter.innerText = counting;
+        });
+
+        decr.addEventListener('click', () => {
+            counting--;
+            counter.innerText = counting;
+        })
+			
+	</script>
+</html>
